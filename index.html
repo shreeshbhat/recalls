@@ -5,8 +5,6 @@
 <script src="loadData.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 <script>
 function w3_open() {
   document.getElementById("main").style.marginLeft = "10%";
@@ -39,9 +37,10 @@ function w3_close() {
 	  </div>
 	</div>
 	
-	<input type="text" class="w3-input" placeholder="Search for products.." ng-model="searchString">
+	
 	
 	<div ng-app="myApp" ng-controller="processData">
+	<input type="text" class="w3-input" placeholder="Search for products.." ng-model="searchString">
 		<table class="w3-table-all w3-card-4">
 			<thead class="thead-inverse">
 				<tr>
