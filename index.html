@@ -1,66 +1,71 @@
 <!DOCTYPE html>
 <html>
-<title>Potential Recalls</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
 <script src="angular.js"></script>
 <script src="loadData.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
-function w3_open() {
-  document.getElementById("main").style.marginLeft = "10%";
-  document.getElementById("mySidebar").style.width = "10%";
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
+
+.flex-container {
+    display: -webkit-flex;
+    display: flex;  
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    text-align: center;
 }
-function w3_close() {
-  document.getElementById("main").style.marginLeft = "0%";
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("openNav").style.display = "inline-block";
+
+.flex-container > * {
+    padding: 20px;
+    -webkit-flex: 1 100%;
+    flex: 1 100%;
 }
+@media all and (min-width: 768px) {
+    .nav {text-align:left;-webkit-flex: 1 auto;flex:1 auto;-webkit-order:1;order:1;}
+    .article {-webkit-flex:5 0px;flex:5 0px;-webkit-order:2;order:2;}
+    footer {-webkit-order:3;order:3;}
+}
+
 </script>
 </head>
 <body>
 
-<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left w3-deep-purple" style="display:none" id="mySidebar">
-  <button class="w3-bar-item w3-button w3-large w3-hover-white w3-xlarge"  onclick="w3_close()"> &times;</button>
-  <a href="https://arxiv.org/abs/1703.00518" class="w3-bar-item w3-button w3-hover-white">Research paper</a>
-  <a href="https://github.com/tapilab/icwsm-2017-recalls" class="w3-bar-item w3-button w3-hover-white">GitHub</a>
-</div>
-
-
-<div zclass="w3-main" id="main">
+<div class="flex-container">
 	
-	<div class="w3-container w3-deep-purple" style="height:52px;">
-	  <button class="w3-button w3-display-topleft w3-deep-purple w3-xlarge w3-hover-white" onclick="w3_open()">&#9776;</button>
-	  <div class="w3-container w3-display-topmiddle">
-		<h2>Potential recalls</h2>
-	  </div>
+	<div class="w3-container w3-deep-purple" style = "height : 70px">
+		<header>
+		  <h1 style = "text-align: center">Potential recalls</h1>
+		</header>
 	</div>
 	
+	<nav class="nav w3-deep-purple">
+	  <a href="https://arxiv.org/abs/1703.00518" class="w3-bar-item w3-button w3-hover-white w3-display-topright">Research paper</a>
+	  <a href="https://github.com/tapilab/icwsm-2017-recalls" class="w3-bar-item w3-button w3-hover-white  w3-display-topleft ">GitHub</a>
+	</nav>
 	
 	
 	<div ng-app="myApp" ng-controller="processData">
 	<input type="text" class="w3-input" placeholder="Search for products.." ng-model="searchString">
-		<table class="w3-table-all w3-card-4">
-			<thead class="thead-inverse">
-				<tr>
-					<th></th>
-					<th>Title</th>
-					<th>Product</th>
-					<th>Review</th>
-					<th>Probability of a hazardous review</th>
-				</tr>
-			</thead>
-			  <tr class="w3-hover-sand" ng-repeat="x in reviews | filter : searchString">
-			  <td>{{x.id}}</td>
-			   <td>{{x.title}}</td>
-			   <td><a href="https://www.amazon.com/dp/{{x.asin}}">Product link</a> </td>
-			   <td><a href="https://www.amazon.com/gp/customer-reviews/{{x.review_id}}">Review link</a> </td>
-			   <td>{{x.proba}}</td>
-			   </tr>
-		</table>
+		<div class="w3-responsive">
+			<table class="w3-table-all w3-card-4">
+				<thead class="thead-inverse">
+					<tr>
+						<th></th>
+						<th>Title</th>
+						<th>Product</th>
+						<th>Review</th>
+						<th>Probability of a hazardous review</th>
+					</tr>
+				</thead>
+				  <tr class="w3-hover-sand" ng-repeat="x in reviews | filter : searchString">
+				  <td>{{x.id}}</td>
+				   <td>{{x.title}}</td>
+				   <td><a href="https://www.amazon.com/dp/{{x.asin}}">Product link</a> </td>
+				   <td><a href="https://www.amazon.com/gp/customer-reviews/{{x.review_id}}">Review link</a> </td>
+				   <td>{{x.proba}}</td>
+				   </tr>
+			</table>
+		</div>
 	</div>
 </div>
 </body>
