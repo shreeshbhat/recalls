@@ -26,6 +26,33 @@
     .nav {text-align:left;-webkit-flex: 1 auto;flex:1 auto;-webkit-order:1;order:1;}
     .article {-webkit-flex:5 0px;flex:5 0px;-webkit-order:2;order:2;}
     footer {-webkit-order:3;order:3;}
+	.hea {font-size: 20px; align-self: center;
+	display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    font-weight: bold;}
+}
+
+@media only screen and (max-width : 767px){
+	.hea {font-size: 12px; align-self: center;
+	display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    font-weight: bold;}
+}
+
+body {
+  font-size: 16px;
+}
+
+.small {
+  font-size: 12px; /* 75% of the baseline */
+}
+
+.large {
+  font-size: 20px; /* 125% of the baseline */
 }
 
 </script>
@@ -34,10 +61,8 @@
 
 <div class="flex-container">
 	
-	<div class="w3-container w3-deep-purple" style = "height : 70px">
-		<header>
-		  <h1 style = "text-align: center">Potential recalls</h1>
-		</header>
+	<div class="w3-container w3-deep-purple" style = "height : 80px;display: flex;justify-content: center;">
+		  <hea style = "text-align: center font-size: 20px;align-self: center;margin-top: 1.8em;margin-bottom: 0.1em;font-weight: bold;">Potential recalls</hea>
 	</div>
 	
 	<nav class="nav w3-deep-purple">
@@ -52,20 +77,22 @@
 			<table class="w3-table-all w3-card-4">
 				<thead class="thead-inverse">
 					<tr>
-						<th></th>
-						<th>Title</th>
-						<th>Product</th>
-						<th>Review</th>
-						<th>Probability of a hazardous review</th>
+						<th>ID</th>
+						<th>Product Name</th>
+						<th>Review Title</th>
+						<th>Product link</th>
+						<th>Review link</th>
+						<th>Probability of hazardous review</th>
 					</tr>
 				</thead>
 				  <tr class="w3-hover-sand" ng-repeat="x in reviews | filter : searchString">
 				  <td>{{x.id}}</td>
-				   <td>{{x.title}}</td>
-				   <td><a href="https://www.amazon.com/dp/{{x.asin}}">Product link</a> </td>
-				   <td><a href="https://www.amazon.com/gp/customer-reviews/{{x.review_id}}">Review link</a> </td>
-				   <td>{{x.proba}}</td>
-				   </tr>
+				  <td>{{x.product_name}}</td>
+				  <td>{{x.title}}</td>
+				  <td><a href="https://www.amazon.com/dp/{{x.asin}}" target="_blank">Product link</a> </td>
+				  <td><a href="https://www.amazon.com/gp/customer-reviews/{{x.review_id}}" target="_blank">Review link</a> </td>
+				  <td>{{x.proba}}</td>
+				  </tr>
 			</table>
 		</div>
 	</div>
