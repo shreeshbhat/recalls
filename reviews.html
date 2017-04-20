@@ -4,7 +4,7 @@
 <title>Potential Recalls</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="angular.js"></script>
-<script src="loadProductData.js"></script>
+<script src="loadData.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
@@ -66,7 +66,7 @@ body {
 	</div>
 	
 	<nav class="nav w3-deep-purple">
-	  <a href="reviews.html" class="w3-bar-item w3-button w3-hover-white w3-display-topright" target="_blank">View reviews</a>
+	  <a href="https://arxiv.org/abs/1703.00518" class="w3-bar-item w3-button w3-hover-white w3-display-topright">Research paper</a>
 	  <a href="https://github.com/tapilab/icwsm-2017-recalls" class="w3-bar-item w3-button w3-hover-white  w3-display-topleft ">GitHub</a>
 	</nav>
 	
@@ -79,15 +79,19 @@ body {
 					<tr>
 						<th>ID</th>
 						<th>Product Name</th>
-						<th>No of hazardous reviews</th>
+						<th>Review Title</th>
 						<th>Product link</th>
+						<th>Review link</th>
+						<th>Probability of hazardous review</th>
 					</tr>
 				</thead>
 				  <tr class="w3-hover-sand" ng-repeat="x in reviews | filter : searchString">
 				  <td>{{x.id}}</td>
 				  <td>{{x.product_name}}</td>
-				  <td>{{x.count}}</td>
+				  <td>{{x.title}}</td>
 				  <td><a href="https://www.amazon.com/dp/{{x.asin}}" target="_blank">Product link</a> </td>
+				  <td><a href="https://www.amazon.com/gp/customer-reviews/{{x.review_id}}" target="_blank">Review link</a> </td>
+				  <td>{{x.proba}}</td>
 				  </tr>
 			</table>
 		</div>
